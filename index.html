@@ -248,11 +248,12 @@
     #webgl-hero{position:absolute;inset:-15%;width:130%;height:130%;display:grid;place-items:center}
     #webgl-hero canvas{position:relative;z-index:1;width:100% !important;height:100% !important;display:block;opacity:0;transition:opacity .55s var(--ease-soft)}
     #webgl-hero.webgl-ready canvas{opacity:1}
-    /* Secours de la sculpture : portrait professionnel visible même si WebGL est désactivé, bloqué ou indisponible. */
-    .sculpture-fallback{position:absolute;z-index:0;width:min(50%,250px);aspect-ratio:1;overflow:hidden;border:2px solid var(--gold);border-radius:50%;background:#14161c;box-shadow:0 0 0 12px rgba(214,188,117,.08),0 26px 52px rgba(0,0,0,.35);transition:opacity .45s var(--ease-soft),transform .45s var(--ease-soft)}
+    /* Secours de la sculpture : portrait toujours lisible, même lorsque le navigateur dessine la scène WebGL sans réussir sa texture distante. */
+    .sculpture-fallback{position:absolute;z-index:2;width:min(50%,250px);aspect-ratio:1;overflow:hidden;border:2px solid var(--gold);border-radius:50%;background:#14161c;box-shadow:0 0 0 12px rgba(214,188,117,.08),0 26px 52px rgba(0,0,0,.35);transform-style:preserve-3d;animation:sculpture-fallback-float 6.8s var(--ease-soft) infinite alternate}
     .sculpture-fallback::after{position:absolute;inset:9px;border:1px solid rgba(214,188,117,.55);border-radius:50%;content:"";pointer-events:none}
     .sculpture-fallback img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:contrast(1.04) saturate(.9)}
-    #webgl-hero.webgl-ready .sculpture-fallback{opacity:0;transform:scale(.96);pointer-events:none}
+    @keyframes sculpture-fallback-float{from{transform:translate3d(0,0,0) rotateY(-3deg) rotateZ(-.6deg)}to{transform:translate3d(0,-9px,16px) rotateY(3deg) rotateZ(.6deg)}}
+    @media(prefers-reduced-motion:reduce){.sculpture-fallback{animation:none}}
     .no-photo-note{
       position:absolute;right:0;bottom:14px;max-width:210px;padding:13px 15px;
       border-left:1px solid var(--gold);background:rgba(23,30,42,.68);color:var(--smoke);font-size:.78rem;
@@ -687,6 +688,8 @@
     .player-spinner{width:13px;height:13px;border:1px solid rgba(242,239,231,.28);border-top-color:var(--gold);border-radius:50%;animation:player-spin .75s linear infinite}
     @keyframes player-spin{to{transform:rotate(360deg)}}
     .premium-video-frame.is-error .player-loader{opacity:1;color:#f0b4a9}
+    /* Les vidéos ACG sont en paysage : les commandes restent visibles pour garantir l’accès immédiat au plein écran sur tous les PC. */
+    .video:not(.dounia-reel) .premium-video-frame .player-controls{opacity:1;transform:none}
     @media(max-width:620px){.player-controls{right:8px;bottom:8px;left:8px;gap:4px;padding:7px}.player-time{min-width:64px;font-size:.55rem}.player-volume{display:none}.player-center-play{width:64px;height:64px}.premium-video-frame .video-player{min-height:195px}}
     @media(prefers-reduced-motion:reduce){.player-spinner{animation:none}.player-center-play,.player-controls{transition:none}}
 
@@ -1488,10 +1491,19 @@ Error generating stack: `+l.message+`
           mute.querySelector('.control-glyph').textContent = video.muted ? '×' : '⌁';
         });
         volume.addEventListener('input', () => { video.volume = Number(volume.value); video.muted = video.volume === 0; });
-        fullscreen.addEventListener('click', () => {
+        fullscreen.addEventListener('click', async () => {
           const frame = card.querySelector('.premium-video-frame') || card;
-          if (document.fullscreenElement) document.exitFullscreen?.();
-          else frame.requestFullscreen?.();
+          const activeFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+          const exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+          const request = frame.requestFullscreen || frame.webkitRequestFullscreen || frame.msRequestFullscreen;
+          try {
+            if (activeFullscreen && exit) await exit.call(document);
+            else if (request) await request.call(frame);
+            // Fallback utile notamment sur certains navigateurs Apple.
+            else if (typeof video.webkitEnterFullscreen === 'function') video.webkitEnterFullscreen();
+          } catch (error) {
+            card.classList.add('is-controls-visible');
+          }
         });
         pip.addEventListener('click', async () => {
           try { if (document.pictureInPictureElement) await document.exitPictureInPicture(); else if (document.pictureInPictureEnabled) await video.requestPictureInPicture(); } catch (error) {}
