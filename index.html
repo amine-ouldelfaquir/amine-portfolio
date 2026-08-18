@@ -245,8 +245,14 @@
     .hero p.hero-value{max-width:480px;margin:16px 0 30px;color:var(--ivory);font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1.14rem;font-weight:500}
     .actions{display:flex;flex-wrap:wrap;gap:10px}
     .hero-art{position:relative;min-height:500px}
-    #webgl-hero{position:absolute;inset:-15%;width:130%;height:130%}
-    #webgl-hero canvas{width:100% !important;height:100% !important;display:block}
+    #webgl-hero{position:absolute;inset:-15%;width:130%;height:130%;display:grid;place-items:center}
+    #webgl-hero canvas{position:relative;z-index:1;width:100% !important;height:100% !important;display:block;opacity:0;transition:opacity .55s var(--ease-soft)}
+    #webgl-hero.webgl-ready canvas{opacity:1}
+    /* Secours de la sculpture : portrait professionnel visible même si WebGL est désactivé, bloqué ou indisponible. */
+    .sculpture-fallback{position:absolute;z-index:0;width:min(50%,250px);aspect-ratio:1;overflow:hidden;border:2px solid var(--gold);border-radius:50%;background:#14161c;box-shadow:0 0 0 12px rgba(214,188,117,.08),0 26px 52px rgba(0,0,0,.35);transition:opacity .45s var(--ease-soft),transform .45s var(--ease-soft)}
+    .sculpture-fallback::after{position:absolute;inset:9px;border:1px solid rgba(214,188,117,.55);border-radius:50%;content:"";pointer-events:none}
+    .sculpture-fallback img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:contrast(1.04) saturate(.9)}
+    #webgl-hero.webgl-ready .sculpture-fallback{opacity:0;transform:scale(.96);pointer-events:none}
     .no-photo-note{
       position:absolute;right:0;bottom:14px;max-width:210px;padding:13px 15px;
       border-left:1px solid var(--gold);background:rgba(23,30,42,.68);color:var(--smoke);font-size:.78rem;
@@ -316,7 +322,11 @@
     .language{display:grid;grid-template-columns:120px 1fr 110px;gap:12px;align-items:center;font-size:.72rem;transition:transform .4s var(--ease)}
     .language:hover{transform:translateX(3px)}
     .lang-name{display:flex;gap:8px;align-items:center;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-    .flag{font-size:1.05rem;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}
+    /* Drapeaux CSS : visibles même quand le système du PC ne possède pas les emojis de drapeaux. */
+    .flag{position:relative;display:inline-block;width:1.3rem;height:.86rem;overflow:hidden;border:1px solid rgba(242,239,231,.38);box-shadow:0 2px 4px rgba(0,0,0,.36);line-height:1;flex:none}
+    .flag-ma{background:#c1272d}.flag-ma::after{position:absolute;inset:0;display:grid;place-items:center;color:#006233;content:"★";font-size:.78rem;line-height:1}
+    .flag-fr{background:linear-gradient(90deg,#1b4396 0 33.33%,#f7f7f3 33.33% 66.66%,#e4363b 66.66%)}
+    .flag-us{background:repeating-linear-gradient(to bottom,#b22234 0 8%,#fff 8% 16%)}.flag-us::after{position:absolute;top:0;left:0;width:48%;height:55%;background:#3c3b6e;content:""}
     .bar{position:relative;height:5px;border-radius:3px;overflow:hidden;background:rgba(242,239,231,.1);box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}
     .bar i{
       position:relative;display:block;width:var(--width);height:100%;border-radius:3px;
@@ -737,7 +747,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
     }
   }
   </script>
-  <script type="module" crossorigin src="/amine-portfolio/assets/index-CUv3BjC1.js"></script>
+  <script type="module" crossorigin src="/amine-portfolio/assets/index-CmlbnYZo.js"></script>
   <script src="/__manus__/debug-collector.js" defer></script>
 </head>
 <body>
@@ -889,8 +899,8 @@ Error generating stack: `+l.message+`
 <a class="btn" download="Amine-Ould-El-Faquir-CV.pdf" href="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf">Télécharger CV</a>
 </div>
 </div>
-<div class="hero-art">
-<div aria-hidden="true" id="webgl-hero"></div>
+	<div class="hero-art">
+	<div aria-hidden="true" id="webgl-hero"><div class="sculpture-fallback"><img alt="" src="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-photo-professionnelle_02aecff7.jpg"/></div></div>
 </div>
 </div>
 <span class="scroll">Défiler</span>
@@ -906,10 +916,10 @@ Error generating stack: `+l.message+`
 <h2>Passionné par le<br/><em>contenu Et marketing</em></h2>
 <p>Étudiant en deuxième année de Master en Ingénierie Commerciale et Marketing Digital à l'ENSET Mohammedia, je combine communication, création de contenu et promotion digitale pour rendre les projets plus visibles.</p>
 <p>Mes expériences chez Dounia Learn Languages et l'Académie ACG m'ont permis de travailler sur l'animation des réseaux sociaux, les contenus visuels, la prospection et la communication de formations. EatToBuild prolonge cette pratique dans un projet éditorial personnel.</p>
-<div class="languages" data-languages="">
-<div class="language"><span class="lang-name"><span aria-hidden="true" class="flag">🇲🇦</span>Arabe</span><div class="bar"><i style="--width:100%"></i></div><span class="lang-level">Maternelle</span></div>
-<div class="language"><span class="lang-name"><span aria-hidden="true" class="flag">🇫🇷</span>Français</span><div class="bar"><i style="--width:85%"></i></div><span class="lang-level">Avancé</span></div>
-<div class="language"><span class="lang-name"><span aria-hidden="true" class="flag">🇺🇸</span>Anglais</span><div class="bar"><i style="--width:60%"></i></div><span class="lang-level">Intermédiaire</span></div>
+	<div class="languages" data-languages="">
+	<div class="language"><span class="lang-name"><span aria-label="Maroc" class="flag flag-ma" role="img"></span>Arabe</span><div class="bar"><i style="--width:100%"></i></div><span class="lang-level">Maternelle</span></div>
+	<div class="language"><span class="lang-name"><span aria-label="France" class="flag flag-fr" role="img"></span>Français</span><div class="bar"><i style="--width:85%"></i></div><span class="lang-level">Avancé</span></div>
+	<div class="language"><span class="lang-name"><span aria-label="États-Unis" class="flag flag-us" role="img"></span>Anglais</span><div class="bar"><i style="--width:60%"></i></div><span class="lang-level">Intermédiaire</span></div>
 </div>
 </div>
 </div>
@@ -1327,8 +1337,6 @@ Error generating stack: `+l.message+`
 </main>
 <footer><div class="wrap footer"><div class="brand"><img alt="AOF" class="mark mark-image" height="42" src="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-logo-dark_f6ef9450.png" width="42"/> AMINE OULD EL FAQUIR</div><span>© 2026 Amine Ould El Faquir — Tous droits réservés</span></div></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
     /* Premium video controls with click-to-load lazy streaming. */
     (() => {
