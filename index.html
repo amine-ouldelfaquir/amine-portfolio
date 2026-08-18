@@ -706,6 +706,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
 [data-theme="light"] #education{background:rgba(238,231,214,.94)!important;color:var(--ink)!important}
 [data-theme="light"] #videos{background:linear-gradient(160deg,rgba(236,228,209,.94),rgba(244,239,226,.96))!important;color:var(--ink)!important}
 [data-theme="light"] #contact{background:linear-gradient(155deg,rgba(236,228,209,.96),rgba(231,221,198,.9) 55%,rgba(244,239,226,.97))!important;color:var(--ink)!important}
+[data-theme="light"] header :is(a,span,button),[data-theme="light"] main :is(h1,h2,h3,h4,p,a,span,b,strong,li,label,button),[data-theme="light"] footer :is(h1,h2,h3,h4,p,a,span,b,strong,li,label,button),[data-theme="light"] .mobile-nav :is(a,span,button){color:#1c1a14!important}
 @media(max-width:620px){.profile-inset{top:12px!important;left:-8px!important;width:36%!important}}
 </style><script type="importmap">
   {
@@ -835,7 +836,7 @@ Error generating stack: `+l.message+`
 <a href="#contact">Contact</a>
 </nav>
 <div class="header-cta">
-<a aria-haspopup="dialog" data-cv-open="" href="#cv-modal">Mon CV</a>
+<a data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf">Mon CV</a>
 <a class="primary" href="#contact">Me contacter</a>
 </div>
 <button aria-label="Basculer vers le thème clair" aria-pressed="false" class="theme-toggle">
@@ -857,14 +858,13 @@ Error generating stack: `+l.message+`
 <section class="hero" id="hero">
 <div class="wrap hero-grid">
 <div>
-<span class="eyebrow hero-reveal">AMINE OULD EL FAQUIR</span>
 <span class="status hero-reveal">Disponible pour Stage ou Collaboration</span>
 <h1 class="hero-reveal">AMINE <em>OULD EL FAQUIR</em></h1>
 <p class="hero-desc hero-reveal">Chargé de Communication Et Marketing Digital<br/>Master Ingénierie Commerciale Et Marketing Digital · ENSET Mohammedia</p>
 <p class="hero-value hero-reveal">Je transforme la communication et la création de contenu en visibilité digitale.</p>
 <div class="actions hero-reveal">
 <a class="btn primary" href="#projects">Voir mes réalisations</a>
-<a aria-haspopup="dialog" class="btn" data-cv-open="" href="#cv-modal">Visualiser CV</a>
+<a class="btn" data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf">Visualiser CV</a>
 <a class="btn" download="Amine-Ould-El-Faquir-CV.pdf" href="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf">Télécharger CV</a>
 </div>
 </div>
@@ -1261,14 +1261,14 @@ Error generating stack: `+l.message+`
 <div class="cert-body">
 <h4>Marketing sur les réseaux sociaux</h4>
 <span class="cert-issuer">HP LIFE — Septembre 2025</span>
-<a class="cert-link cert-view-link" data-cert-open="" href="#certificate-modal">Vérifier / Visualiser ↗</a></div>
+<a class="cert-link cert-view-link" data-cert-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-hp-life_3574e3f4.pdf">Vérifier / Visualiser ↗</a></div>
 </article>
 <article class="certificate reveal" data-cert-kind="image" data-cert-src="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-acg-redacted_615b9ca6.png" data-cert-title="Certificat Responsable Marketing Digital — Académie ACG" role="button" tabindex="0">
 <div class="cert-thumb"><img alt="Certificat Responsable Marketing Digital, Académie ACG" loading="lazy" src="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-acg-redacted_615b9ca6.png"/></div>
 <div class="cert-body">
 <h4>Responsable Marketing Digital</h4>
 <span class="cert-issuer">Académie ACG · FSJES Mohammedia — Mai–Juillet 2024</span>
-<a class="cert-link cert-view-link" data-cert-open="" href="#certificate-modal">Vérifier / Visualiser ↗</a></div>
+<a class="cert-link cert-view-link" data-cert-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-acg-redacted_615b9ca6.png">Vérifier / Visualiser ↗</a></div>
 </article>
 </div>
 </div>
@@ -1551,19 +1551,12 @@ Error generating stack: `+l.message+`
 (() => {
   const open = modal => { modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
   const close = modal => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; };
-  const cvModal = document.getElementById('cv-modal');
-  document.querySelectorAll('[data-cv-open]').forEach(trigger => trigger.addEventListener('click', event => { event.preventDefault(); open(cvModal); }));
-  const certModal = document.getElementById('certificate-modal');
-  const certContent = document.getElementById('certificate-modal-content');
-  const certTitle = document.getElementById('certificate-modal-title');
+  const cvUrl = 'https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf';
+  document.querySelectorAll('[data-cv-open]').forEach(trigger => trigger.addEventListener('click', event => { event.preventDefault(); window.location.assign(cvUrl); }));
   document.querySelectorAll('.certificate[data-cert-src]').forEach(card => {
     const display = event => {
       if (event.target.closest('a')) event.preventDefault();
-      const src = card.dataset.certSrc, kind = card.dataset.certKind, title = card.dataset.certTitle || 'Certificat';
-      certTitle.textContent = title; certContent.replaceChildren();
-      const node = kind === 'pdf' ? document.createElement('iframe') : document.createElement('img');
-      node.src = src; node.title = title; node.alt = title;
-      certContent.append(node); open(certModal);
+      window.location.assign(card.dataset.certSrc);
     };
     card.addEventListener('click', display);
     card.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); display(event); } });
