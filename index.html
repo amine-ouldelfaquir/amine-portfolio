@@ -289,9 +289,9 @@
     h2 em{color:var(--gold);font-style:normal}
     .section-intro{max-width:640px;margin:18px auto 0;color:var(--smoke)}
 
-    /* Scroll reveal (driven by GSAP ScrollTrigger) */
-    .reveal{opacity:0;filter:blur(9px);transform:translateY(28px)}
-    .reveal.visible{opacity:1;filter:none;transform:none;transition:opacity .8s var(--ease-soft),transform .9s var(--ease-soft),filter .7s var(--ease-soft)}
+    /* Scroll reveal (driven by GSAP ScrollTrigger): depth works in both scroll directions. */
+    .reveal{opacity:0;filter:blur(9px);transform:perspective(1000px) rotateX(8deg) translate3d(0,30px,-24px);transform-origin:center bottom}
+    .reveal.visible{opacity:1;filter:none;transform:perspective(1000px) rotateX(0) translate3d(0,0,0);transition:opacity .8s var(--ease-soft),transform .9s var(--ease-soft),filter .7s var(--ease-soft)}
     /* Filet de sécurité : si les librairies CDN (Three.js/GSAP) ne chargent pas, le contenu reste lisible */
     .js-fallback .reveal,.js-fallback .hero-reveal{opacity:1 !important;filter:none !important;transform:none !important}
 
@@ -706,7 +706,7 @@
     .premium-video-frame.is-playing .video-poster,.premium-video-frame.is-loaded .video-poster{opacity:0}
 
     /* User-requested visual refinements */
-    .brand .mark-image{width:42px;height:42px;display:block;object-fit:cover;flex:none;padding:0;border:0;border-radius:50%;clip-path:circle(50%);background:transparent;box-sizing:border-box;filter:none}
+    .brand .mark-image{width:42px;height:42px;display:block;object-fit:contain;flex:none;padding:0;border:0;border-radius:0;clip-path:none;background:transparent;box-sizing:border-box;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2))}
     .hero h1{white-space:nowrap;font-size:clamp(2rem,4.1vw,5.25rem);letter-spacing:-.055em}
     .hero h1 em{white-space:nowrap}
     .project.featured .project-media{display:grid;place-items:center;min-height:210px}
@@ -715,7 +715,11 @@
       .brand .mark-image{width:34px;height:34px;padding:0}
       .hero h1{font-size:clamp(1.25rem,7.2vw,2.7rem);letter-spacing:-.065em}
     }
-[data-theme="light"] .brand .mark-image{filter:none}
+[data-theme="light"] .brand .mark-image{filter:drop-shadow(0 2px 4px rgba(74,53,20,.17))}
+
+    /* Communication digitale reprend exactement le cadre visuel de Création de contenu. */
+    .projects .project:nth-child(2) .project-media,.projects .project:nth-child(3) .project-media{height:170px;min-height:170px;max-height:170px}
+    .projects .project:nth-child(2) .project-media img,.projects .project:nth-child(3) .project-media img{height:170px;min-height:0;object-fit:cover}
 
     .certificate[data-cert-src]{cursor:pointer}
     .certificate[data-cert-src]:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -727,10 +731,10 @@
     .certificate-modal-dialog img{display:block;max-width:100%;max-height:88vh;width:auto;height:auto;object-fit:contain}
     .certificate-modal-close{position:absolute;z-index:2;top:10px;right:10px;width:38px;height:38px;border:1px solid rgba(214,188,117,.65);background:rgba(9,11,16,.85);color:var(--ivory);font-size:1.25rem;cursor:pointer}
 </style>
-<link href="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-favicon-mark_03d15a76.png" rel="icon"/><style>
+<link href="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-a-monogram-final-transparent_06a14f9f.png" rel="icon"/><style>
 /* Design reminder: Atelier éditorial cinématique — ivoire, encre et or patiné. */
 
-.loader-ring{overflow:hidden;display:grid;place-items:center} .loader-logo{width:67%;height:67%;object-fit:contain;filter:invert(1);opacity:0;transform:scale(.85);animation:logo-arrive .55s .12s cubic-bezier(.23,1,.32,1) forwards} [data-theme="light"] .loader-logo{filter:none} @keyframes logo-arrive{to{opacity:1;transform:scale(1)}}
+.loader-ring{overflow:hidden;display:grid;place-items:center} .loader-logo{width:67%;height:67%;object-fit:contain;filter:none;opacity:0;transform:scale(.85);animation:logo-arrive .55s .12s cubic-bezier(.23,1,.32,1) forwards} [data-theme="light"] .loader-logo{filter:none} @keyframes logo-arrive{to{opacity:1;transform:scale(1)}}
 
 .hero-art::after{content:"";position:absolute;inset:8%;background:url("https://aminefolio-bafszvhn.manus.space/manus-storage/amine-orbital-motif_b35369fe.png") center/contain no-repeat;pointer-events:none;mix-blend-mode:multiply;opacity:.62} [data-theme="light"] .hero-art::after{opacity:.43}
 .certificate::after{content:"";position:absolute;right:12px;top:12px;width:44px;height:44px;background:url("https://aminefolio-bafszvhn.manus.space/manus-storage/amine-document-seal_5535e343.png") center/contain no-repeat;opacity:.8;pointer-events:none}
@@ -758,7 +762,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
     }
   }
   </script>
-  <script type="module" crossorigin src="/amine-portfolio/assets/index-CZQRQH8e.js"></script>
+  <script type="module" crossorigin src="/amine-portfolio/assets/index-D4nvYsHC.js"></script>
   <script src="/__manus__/debug-collector.js" defer></script>
 </head>
 <body>
@@ -825,7 +829,7 @@ Error generating stack: `+l.message+`
 <a class="skip-link" href="#main">Aller au contenu principal</a>
 <div aria-live="polite" id="loader" role="status">
 <div class="loader-mark">
-<div class="loader-ring"><img alt="" aria-hidden="true" class="loader-logo" src="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-logo-dark_f6ef9450.png"/></div>
+<div class="loader-ring"><img alt="" aria-hidden="true" class="loader-logo" src="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-a-monogram-final-transparent_06a14f9f.png"/></div>
 <span class="loader-name">Amine Ould El Faquir</span>
 </div>
 </div>
@@ -867,7 +871,7 @@ Error generating stack: `+l.message+`
 <div aria-hidden="true" class="cursor-dot"></div>
 <div aria-hidden="true" class="cursor-ring"></div>
 <header id="top">
-<a class="brand" href="#hero"><img alt="AOF" class="mark mark-image" height="42" src="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-logo-dark_f6ef9450.png" width="42"/> AMINE OULD EL FAQUIR</a>
+<a class="brand" href="#hero"><img alt="Monogramme A d’Amine Ould El Faquir" class="mark mark-image" height="42" src="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-a-monogram-final-transparent_06a14f9f.png" width="42"/> AMINE OULD EL FAQUIR</a>
 <nav aria-label="Navigation principale" class="desktop-nav">
 <a href="#about">Profil</a>
 <a href="#education">Formation</a>
@@ -1346,7 +1350,7 @@ Error generating stack: `+l.message+`
 </div>
 </section>
 </main>
-<footer><div class="wrap footer"><div class="brand"><img alt="AOF" class="mark mark-image" height="42" src="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-logo-dark_f6ef9450.png" width="42"/> AMINE OULD EL FAQUIR</div><span>© 2026 Amine Ould El Faquir — Tous droits réservés</span></div></footer>
+<footer><div class="wrap footer"><div class="brand"><img alt="Monogramme A d’Amine Ould El Faquir" class="mark mark-image" height="42" src="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-a-monogram-final-transparent_06a14f9f.png" width="42"/> AMINE OULD EL FAQUIR</div><span>© 2026 Amine Ould El Faquir — Tous droits réservés</span></div></footer>
 
 <script>
     /* Premium video controls with click-to-load lazy streaming. */
