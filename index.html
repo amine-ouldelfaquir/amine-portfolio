@@ -505,6 +505,9 @@
     .form .btn{width:100%;border:0}
     .success{display:none;margin-top:13px;padding:10px;border-left:2px solid var(--gold);background:rgba(214,188,117,.1);color:var(--gold);font-size:.82rem}
     .success.show{display:block}
+    .form-error{display:none;margin-top:13px;padding:10px;border-left:2px solid #c75345;background:rgba(199,83,69,.10);color:#c75345;font-size:.82rem}
+    .form-error.show{display:block}
+    .form-trap{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
 
     footer{padding:28px 0;border-top:1px solid var(--line);background:#07090d}
     .footer{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;color:var(--slate);font-size:.73rem}
@@ -545,6 +548,11 @@
     [data-theme="light"] .project-media,[data-theme="light"] .video-thumb,[data-theme="light"] .cert-thumb{
       background:linear-gradient(150deg,rgba(169,122,46,.10),rgba(28,26,20,.06));
     }
+    [data-theme="light"] .form input,[data-theme="light"] .form textarea{
+      border-bottom-color:rgba(18,22,30,.82);color:var(--ink);
+    }
+    [data-theme="light"] .form input::placeholder,[data-theme="light"] .form textarea::placeholder{color:rgba(18,22,30,.62)}
+    [data-theme="light"] .form input:focus,[data-theme="light"] .form textarea:focus{border-bottom-color:var(--gold)}
     [data-theme="light"] .certificate-note{background:rgba(169,122,46,.09)}
     [data-theme="light"] .card-sheen{background:radial-gradient(circle 260px at var(--mx,50%) var(--my,50%),rgba(169,122,46,.16),transparent 70%)}
     [data-theme="light"] .profile-panel{background:linear-gradient(145deg,rgba(169,122,46,.10),var(--panel))}
@@ -716,7 +724,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
     }
   }
   </script>
-  <script type="module" crossorigin src="/amine-portfolio/assets/index-G3xReQaq.js"></script>
+  <script type="module" crossorigin src="/amine-portfolio/assets/index-BhkCltHH.js"></script>
   <script src="/__manus__/debug-collector.js" defer></script>
 </head>
 <body>
@@ -1263,12 +1271,12 @@ Error generating stack: `+l.message+`
 <span class="cert-issuer">HP LIFE — Septembre 2025</span>
 <a class="cert-link cert-view-link" data-cert-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-hp-life_3574e3f4.pdf">Vérifier / Visualiser ↗</a></div>
 </article>
-<article class="certificate reveal" data-cert-kind="image" data-cert-src="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-acg-cin-redacted-opaque_431ff1a2.png" data-cert-title="Certificat Responsable Marketing Digital — Académie ACG" role="button" tabindex="0">
-<div class="cert-thumb"><img alt="Certificat Responsable Marketing Digital, Académie ACG" loading="lazy" src="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-acg-cin-redacted-opaque_431ff1a2.png"/></div>
+<article class="certificate reveal" data-cert-kind="image" data-cert-src="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-acg-landscape-cin-redacted_6f587994.png" data-cert-title="Certificat Responsable Marketing Digital — Académie ACG" role="button" tabindex="0">
+<div class="cert-thumb"><img alt="Certificat Responsable Marketing Digital, Académie ACG" loading="lazy" src="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-acg-landscape-cin-redacted_6f587994.png"/></div>
 <div class="cert-body">
 <h4>Responsable Marketing Digital</h4>
 <span class="cert-issuer">Académie ACG · FSJES Mohammedia — Mai–Juillet 2024</span>
-<a class="cert-link cert-view-link" data-cert-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-acg-cin-redacted-opaque_431ff1a2.png">Vérifier / Visualiser ↗</a></div>
+<a class="cert-link cert-view-link" data-cert-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/certificat-acg-landscape-cin-redacted_6f587994.png">Vérifier / Visualiser ↗</a></div>
 </article>
 </div>
 </div>
@@ -1289,13 +1297,17 @@ Error generating stack: `+l.message+`
 </div>
 <div class="form reveal">
 <form id="contact-form">
-<label>Nom complet<input placeholder="Votre nom" required=""/></label>
-<label>Email<input placeholder="votre@email.com" required="" type="email"/></label>
-<label>Sujet<input placeholder="Proposition, collaboration…" required=""/></label>
-<label>Message<textarea placeholder="Votre message…" required=""></textarea></label>
+<input name="_subject" type="hidden" value="Nouveau message — Portfolio Amine Ould El Faquir"/>
+<input name="_template" type="hidden" value="table"/>
+<input aria-hidden="true" autocomplete="off" class="form-trap" name="_honey" tabindex="-1" type="text"/>
+<label>Nom complet<input name="name" placeholder="Votre nom" required=""/></label>
+<label>Email<input name="email" placeholder="votre@email.com" required="" type="email"/></label>
+<label>Sujet<input name="subject" placeholder="Proposition, collaboration…" required=""/></label>
+<label>Message<textarea name="message" placeholder="Votre message…" required=""></textarea></label>
 <button class="btn primary" type="submit">Envoyer le message</button>
 </form>
-<p class="success" id="success" role="status">Merci. Utilisez l'email ci-contre pour envoyer votre message à Amine.</p>
+<p class="success" id="success" role="status">Merci. Votre message a été envoyé à Amine.</p>
+<p class="form-error" id="form-error" role="alert">L’envoi a échoué. Réessayez ou utilisez l’adresse e-mail affichée.</p>
 </div>
 </div>
 </section>
