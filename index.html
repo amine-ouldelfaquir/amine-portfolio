@@ -1552,7 +1552,12 @@ Error generating stack: `+l.message+`
   const open = modal => { modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
   const close = modal => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; };
   const cvModal = document.getElementById('cv-modal');
-  document.querySelectorAll('[data-cv-open]').forEach(trigger => trigger.addEventListener('click', event => { event.preventDefault(); open(cvModal); }));
+  const cvUrl = 'https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf';
+  const useDirectMobilePdf = () => window.matchMedia('(max-width: 760px)').matches;
+  document.querySelectorAll('[data-cv-open]').forEach(trigger => trigger.addEventListener('click', event => {
+    if (useDirectMobilePdf()) { window.location.assign(cvUrl); return; }
+    event.preventDefault(); open(cvModal);
+  }));
   const certModal = document.getElementById('certificate-modal');
   const certContent = document.getElementById('certificate-modal-content');
   const certTitle = document.getElementById('certificate-modal-title');
