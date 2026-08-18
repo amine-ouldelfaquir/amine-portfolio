@@ -754,7 +754,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
 [data-theme="light"] #contact{background:linear-gradient(155deg,rgba(236,228,209,.96),rgba(231,221,198,.9) 55%,rgba(244,239,226,.97))!important;color:var(--ink)!important}
 [data-theme="light"] header :is(a,span,button),[data-theme="light"] main :is(h1,h2,h3,h4,p,a,span,b,strong,li,label,button),[data-theme="light"] footer :is(h1,h2,h3,h4,p,a,span,b,strong,li,label,button),[data-theme="light"] .mobile-nav :is(a,span,button){color:#1c1a14!important}
 @media(max-width:620px){.profile-inset{top:12px!important;left:-8px!important;width:36%!important}}
-</style><script type="importmap">
+</style>	<script type="importmap">
   {
     "imports": {
       "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -762,7 +762,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
     }
   }
   </script>
-  <script type="module" crossorigin src="/amine-portfolio/assets/index-B91QiDpk.js"></script>
+  <script type="module" crossorigin src="/amine-portfolio/assets/index-_r7lqohK.js"></script>
   <script src="/__manus__/debug-collector.js" defer></script>
 </head>
 <body>
@@ -1373,8 +1373,71 @@ Error generating stack: `+l.message+`
       }
     });
     applyTheme(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
-  })();
-</script>
+	  })();
+	</script>
+	<script>
+	  /* Interactions de secours : onglets et révélations indépendants de Three.js/GSAP. */
+	  (() => {
+	    const root = document.documentElement;
+	    const tabs = [...document.querySelectorAll('.tab[data-tab]')];
+	    const panels = { pro: document.getElementById('pro'), stage: document.getElementById('stage') };
+	    const activateTab = key => {
+	      const nextPanel = panels[key];
+	      if (!nextPanel) return;
+	      tabs.forEach(tab => {
+	        const active = tab.dataset.tab === key;
+	        tab.classList.toggle('active', active);
+	        tab.setAttribute('aria-selected', String(active));
+	      });
+	      Object.entries(panels).forEach(([name, panel]) => {
+	        if (!panel) return;
+	        panel.hidden = name !== key;
+	        panel.classList.remove('is-entering', 'is-leaving');
+	      });
+	      nextPanel.animate([
+	        { opacity: 0.25, transform: 'perspective(900px) rotateX(3deg) translateY(12px)' },
+	        { opacity: 1, transform: 'perspective(900px) rotateX(0deg) translateY(0)' }
+	      ], { duration: 360, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'both' });
+	    };
+	    if (tabs.length && panels.pro && panels.stage) {
+	      root.dataset.experienceTabsBound = 'true';
+	      tabs.forEach(tab => {
+	        tab.addEventListener('click', () => activateTab(tab.dataset.tab));
+	        tab.addEventListener('keydown', event => {
+	          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); activateTab(tab.dataset.tab); }
+	        });
+	      });
+	    }
+
+	    const revealEls = [...document.querySelectorAll('.reveal')];
+	    const playReveal = (element, fromTop) => {
+	      element.classList.add('visible');
+	      element.animate([
+	        { opacity: 0.42, filter: 'blur(2px)', transform: `perspective(900px) rotateX(${fromTop ? -3 : 3}deg) translateY(${fromTop ? -14 : 14}px)` },
+	        { opacity: 1, filter: 'blur(0)', transform: 'perspective(900px) rotateX(0deg) translateY(0)' }
+	      ], { duration: 430, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'both' });
+	    };
+	    if (revealEls.length) {
+	      root.dataset.nativeRevealBound = 'true';
+	      if ('IntersectionObserver' in window) {
+	        let previousY = window.scrollY;
+	        let scrollDirection = 1;
+	        window.addEventListener('scroll', () => {
+	          scrollDirection = window.scrollY < previousY ? -1 : 1;
+	          previousY = window.scrollY;
+	        }, { passive: true });
+	        const observer = new IntersectionObserver(entries => {
+	          entries.forEach(entry => {
+	            if (entry.isIntersecting) playReveal(entry.target, scrollDirection < 0);
+	          });
+	        }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+	        revealEls.forEach(element => observer.observe(element));
+	      } else {
+	        revealEls.forEach(element => element.classList.add('visible'));
+	      }
+	    }
+	  })();
+	</script>
 
 <script>
     /* Premium video controls with click-to-load lazy streaming. */
