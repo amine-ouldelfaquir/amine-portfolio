@@ -361,11 +361,15 @@
        EXPERIENCE
     ============================================================ */
     #experience{background:linear-gradient(135deg,rgba(17,22,32,.88),rgba(9,11,16,.92))}
-    .tabs{display:flex;width:max-content;margin:0 auto 40px;padding:4px;border:1px solid var(--line)}
-    .tab{padding:10px 19px;border:0;background:transparent;color:var(--smoke);font-size:.73rem;transition:color .25s,background .25s}
-    .tab.active{background:var(--gold);color:#17140d;font-weight:700}
-    .experience-list{display:grid;gap:16px;max-width:1080px;margin:auto}
+    .tabs{display:flex;width:max-content;margin:0 auto 40px;padding:4px;border:1px solid var(--line);perspective:620px}
+    .tab{padding:10px 19px;border:0;background:transparent;color:var(--smoke);font-size:.73rem;transform:translateZ(0);transition:color .22s var(--ease),background .22s var(--ease),transform .32s var(--ease-soft),box-shadow .32s var(--ease-soft)}
+    .tab.active{background:var(--gold);color:#17140d;font-weight:700;transform:translateZ(16px) rotateX(2deg);box-shadow:0 7px 14px rgba(91,61,16,.2)}
+    .experience-list{display:grid;gap:16px;max-width:1080px;margin:auto;transform-style:preserve-3d;transform-origin:center top}
     .experience-list[hidden]{display:none !important}
+    .experience-list.is-entering{animation:experience-panel-enter .48s var(--ease-soft) both}
+    .experience-list.is-leaving{animation:experience-panel-leave .24s var(--ease) both;pointer-events:none}
+    @keyframes experience-panel-enter{from{opacity:0;transform:perspective(920px) rotateX(-9deg) rotateY(4deg) translateY(22px) scale(.975)}to{opacity:1;transform:perspective(920px) rotateX(0) rotateY(0) translateY(0) scale(1)}}
+    @keyframes experience-panel-leave{from{opacity:1;transform:perspective(920px) rotateX(0) rotateY(0) translateY(0) scale(1)}to{opacity:0;transform:perspective(920px) rotateX(7deg) rotateY(-3deg) translateY(-10px) scale(.988)}}
     .experience{
       position:relative;padding:33px 35px 33px 56px;border:1px solid var(--line);
       background:rgba(23,30,42,.72);overflow:hidden;
@@ -681,7 +685,7 @@
     .premium-video-frame.is-playing .video-poster,.premium-video-frame.is-loaded .video-poster{opacity:0}
 
     /* User-requested visual refinements */
-    .brand .mark-image{width:42px;height:42px;display:block;object-fit:contain;flex:none;padding:0;border-radius:50%;background:transparent;box-sizing:border-box;filter:invert(1)}
+    .brand .mark-image{width:42px;height:42px;display:block;object-fit:cover;flex:none;padding:0;border:0;border-radius:50%;clip-path:circle(50%);background:transparent;box-sizing:border-box;filter:none}
     .hero h1{white-space:nowrap;font-size:clamp(2rem,4.1vw,5.25rem);letter-spacing:-.055em}
     .hero h1 em{white-space:nowrap}
     .project.featured .project-media{display:grid;place-items:center;min-height:210px}
@@ -733,7 +737,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
     }
   }
   </script>
-  <script type="module" crossorigin src="/amine-portfolio/assets/index-CLmtq-Dw.js"></script>
+  <script type="module" crossorigin src="/amine-portfolio/assets/index-CUv3BjC1.js"></script>
   <script src="/__manus__/debug-collector.js" defer></script>
 </head>
 <body>
