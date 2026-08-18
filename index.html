@@ -365,6 +365,7 @@
     .tab{padding:10px 19px;border:0;background:transparent;color:var(--smoke);font-size:.73rem;transition:color .25s,background .25s}
     .tab.active{background:var(--gold);color:#17140d;font-weight:700}
     .experience-list{display:grid;gap:16px;max-width:1080px;margin:auto}
+    .experience-list[hidden]{display:none !important}
     .experience{
       position:relative;padding:33px 35px 33px 56px;border:1px solid var(--line);
       background:rgba(23,30,42,.72);overflow:hidden;
@@ -534,7 +535,10 @@
     [data-theme="light"] #videos{background:linear-gradient(160deg,rgba(236,228,209,.94),rgba(244,239,226,.96))}
     [data-theme="light"] #contact{background:linear-gradient(155deg,rgba(236,228,209,.96),rgba(231,221,198,.9) 55%,rgba(244,239,226,.97))}
     [data-theme="light"] footer{background:#e9dfc6}
-    [data-theme="light"] .profile-panel p{color:#fbf6ea;text-shadow:0 2px 14px rgba(15,13,8,.75)}
+    [data-theme="light"] .profile-panel p{
+      padding:9px 12px;border-left:2px solid var(--gold);background:rgba(249,245,234,.94);
+      color:#17140d;text-shadow:none;box-shadow:0 8px 18px rgba(15,13,8,.14);
+    }
     [data-theme="light"] .loader-mark,[data-theme="light"] .loader-name{color:#1c1a14}
 
     /* Cartes : un seul ton clair cohérent remplace les fonds graphite */
