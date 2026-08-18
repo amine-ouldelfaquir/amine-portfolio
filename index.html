@@ -478,8 +478,8 @@
     .certifications{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:22px}
     .certificate{display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);background:rgba(23,30,42,.63);transition:border-color .3s,transform .3s var(--ease)}
     .certificate:hover{border-color:rgba(214,188,117,.4);transform:translateY(-4px)}
-    .cert-thumb{min-height:86px;overflow:hidden;background:linear-gradient(150deg,rgba(214,188,117,.08),rgba(9,11,16,.4));border-bottom:1px solid var(--line)}
-    .cert-thumb img{display:block;width:100%;height:100%;min-height:86px;object-fit:cover;object-position:top;filter:saturate(.85);transition:transform .5s var(--ease-soft)}
+    .cert-thumb{height:118px;min-height:118px;overflow:hidden;background:linear-gradient(150deg,rgba(214,188,117,.08),rgba(9,11,16,.4));border-bottom:1px solid var(--line)}
+    .cert-thumb img{display:block;width:100%;height:100%;min-height:118px;object-fit:cover;object-position:top center;filter:saturate(.85);transition:transform .5s var(--ease-soft)}
     .certificate:hover .cert-thumb img{transform:scale(1.04)}
     .cert-link{margin-top:auto;padding-top:12px;color:var(--gold);font-size:.68rem;font-weight:700}
     .cert-body{display:flex;flex:1;flex-direction:column;padding:18px 20px 20px}
@@ -500,7 +500,7 @@
     .contact span{display:block;color:var(--ivory);font-size:.87rem}
     .form{padding:37px;border:1px solid var(--line);background:rgba(23,30,42,.67);box-shadow:0 30px 70px rgba(0,0,0,.24)}
     .form label{display:grid;gap:6px;margin-bottom:17px;color:var(--smoke);font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-    .form input,.form textarea{width:100%;padding:11px 0;border:0;border-bottom:1px solid rgba(242,239,231,.18);outline:none;background:transparent;color:var(--ivory);font:inherit;text-transform:none;transition:border-color .3s}
+    .form input,.form textarea{width:100%;padding:11px 12px;border:0;border-bottom:1px solid rgba(242,239,231,.18);outline:none;background:rgba(255,255,255,.94);color:#17140d;caret-color:#17140d;font:inherit;text-transform:none;transition:border-color .3s,background .3s}
     .form input:focus,.form textarea:focus{border-bottom-color:var(--gold)}
     .form textarea{min-height:100px;resize:vertical}
     .form .btn{width:100%;border:0}
@@ -553,13 +553,18 @@
       background:linear-gradient(150deg,rgba(169,122,46,.10),rgba(28,26,20,.06));
     }
     [data-theme="light"] .form input,[data-theme="light"] .form textarea{
-      border-bottom-color:rgba(18,22,30,.82);color:var(--ink);
+      border-bottom-color:rgba(18,22,30,.82);background:rgba(255,255,255,.94);color:#17140d;caret-color:#17140d;
     }
     [data-theme="light"] .form input::placeholder,[data-theme="light"] .form textarea::placeholder{color:rgba(18,22,30,.62)}
     [data-theme="light"] .form input:focus,[data-theme="light"] .form textarea:focus{border-bottom-color:var(--gold)}
     [data-theme="light"] .certificate-note{background:rgba(169,122,46,.09)}
     [data-theme="light"] .card-sheen{background:radial-gradient(circle 260px at var(--mx,50%) var(--my,50%),rgba(169,122,46,.16),transparent 70%)}
     [data-theme="light"] .profile-panel{background:linear-gradient(145deg,rgba(169,122,46,.10),var(--panel))}
+    [data-theme="light"] .player-controls{
+      border-color:rgba(28,26,20,.28);background:rgba(249,245,234,.96);box-shadow:0 10px 26px rgba(28,26,20,.18);
+    }
+    [data-theme="light"] .player-controls button,[data-theme="light"] .player-time{color:#17140d}
+    [data-theme="light"] .player-progress,[data-theme="light"] .player-volume{accent-color:#8d6422}
     [data-theme="light"] .theme-toggle .icon-sun{display:block}
     [data-theme="light"] .theme-toggle .icon-moon{display:none}
 
