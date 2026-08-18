@@ -289,9 +289,9 @@
     h2 em{color:var(--gold);font-style:normal}
     .section-intro{max-width:640px;margin:18px auto 0;color:var(--smoke)}
 
-    /* Scroll reveal (driven by GSAP ScrollTrigger): depth works in both scroll directions. */
-    .reveal{opacity:0;filter:blur(9px);transform:perspective(1000px) rotateX(8deg) translate3d(0,30px,-24px);transform-origin:center bottom}
-    .reveal.visible{opacity:1;filter:none;transform:perspective(1000px) rotateX(0) translate3d(0,0,0);transition:opacity .8s var(--ease-soft),transform .9s var(--ease-soft),filter .7s var(--ease-soft)}
+    /* Scroll reveal : mécanisme validé, piloté par GSAP ScrollTrigger. */
+    .reveal{opacity:0;filter:blur(9px);transform:translateY(28px)}
+    .reveal.visible{opacity:1;filter:none;transform:none;transition:opacity .8s var(--ease-soft),transform .9s var(--ease-soft),filter .7s var(--ease-soft)}
     /* Filet de sécurité : si les librairies CDN (Three.js/GSAP) ne chargent pas, le contenu reste lisible */
     .js-fallback .reveal,.js-fallback .hero-reveal{opacity:1 !important;filter:none !important;transform:none !important}
 
@@ -698,6 +698,11 @@
     .video:not(.dounia-reel) .premium-video-frame .player-controls{opacity:1;transform:none}
     .video:not(.dounia-reel) .player-pip{display:none}
     .video:not(.dounia-reel) .player-fullscreen{display:grid!important;width:32px;height:32px;flex:0 0 32px;place-items:center;border:1px solid rgba(214,188,117,.8);border-radius:3px;background:rgba(214,188,117,.12);color:var(--gold);opacity:1!important;visibility:visible!important;font-size:1rem}
+    /* Dounia 2 et 3 : le plein écran reste directement visible sur PC, comme les cartes ACG. */
+    @media(min-width:621px){
+      .videos>article.dounia-reel:nth-child(2) .player-controls,.videos>article.dounia-reel:nth-child(3) .player-controls{top:12px;bottom:auto;opacity:1!important;transform:none!important}
+      .videos>article.dounia-reel:nth-child(2) .player-fullscreen,.videos>article.dounia-reel:nth-child(3) .player-fullscreen{display:grid!important;width:30px;height:30px;flex:0 0 30px;place-items:center;border:1px solid rgba(214,188,117,.8);border-radius:3px;background:rgba(214,188,117,.12);color:var(--gold);opacity:1!important;visibility:visible!important;font-size:1rem}
+    }
     @media(max-width:620px){.player-controls{right:8px;bottom:8px;left:8px;gap:4px;padding:7px}.player-time{min-width:64px;font-size:.55rem}.player-volume{display:none}.player-center-play{width:64px;height:64px}.premium-video-frame .video-player{min-height:195px}}
     @media(prefers-reduced-motion:reduce){.player-spinner{animation:none}.player-center-play,.player-controls{transition:none}}
 
@@ -762,7 +767,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
     }
   }
   </script>
-  <script type="module" crossorigin src="/amine-portfolio/assets/index-_r7lqohK.js"></script>
+  <script type="module" crossorigin src="/amine-portfolio/assets/index-BpEIEAGu.js"></script>
   <script src="/__manus__/debug-collector.js" defer></script>
 </head>
 <body>
@@ -1409,33 +1414,6 @@ Error generating stack: `+l.message+`
 	      });
 	    }
 
-	    const revealEls = [...document.querySelectorAll('.reveal')];
-	    const playReveal = (element, fromTop) => {
-	      element.classList.add('visible');
-	      element.animate([
-	        { opacity: 0.42, filter: 'blur(2px)', transform: `perspective(900px) rotateX(${fromTop ? -3 : 3}deg) translateY(${fromTop ? -14 : 14}px)` },
-	        { opacity: 1, filter: 'blur(0)', transform: 'perspective(900px) rotateX(0deg) translateY(0)' }
-	      ], { duration: 430, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'both' });
-	    };
-	    if (revealEls.length) {
-	      root.dataset.nativeRevealBound = 'true';
-	      if ('IntersectionObserver' in window) {
-	        let previousY = window.scrollY;
-	        let scrollDirection = 1;
-	        window.addEventListener('scroll', () => {
-	          scrollDirection = window.scrollY < previousY ? -1 : 1;
-	          previousY = window.scrollY;
-	        }, { passive: true });
-	        const observer = new IntersectionObserver(entries => {
-	          entries.forEach(entry => {
-	            if (entry.isIntersecting) playReveal(entry.target, scrollDirection < 0);
-	          });
-	        }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
-	        revealEls.forEach(element => observer.observe(element));
-	      } else {
-	        revealEls.forEach(element => element.classList.add('visible'));
-	      }
-	    }
 	  })();
 	</script>
 
