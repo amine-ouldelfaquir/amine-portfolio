@@ -503,9 +503,9 @@
     .contacts{display:grid;gap:8px;margin-top:32px}
     .contact{display:flex;gap:14px;align-items:center;padding:15px;border:1px solid var(--line);background:rgba(23,30,42,.56);text-decoration:none;transition:border-color .3s,transform .25s var(--ease)}
     .contact:hover{border-color:rgba(214,188,117,.62);transform:translateX(4px)}
-    .contact-icon{display:grid;width:38px;height:38px;flex:0 0 38px;place-items:center;border:1px solid rgba(214,188,117,.5);border-radius:50%;color:var(--gold);background:rgba(214,188,117,.08)}
-    .contact-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .contact-icon--linkedin{font:700 .84rem/1 'DM Sans',sans-serif;letter-spacing:-.06em}
+    .contact-icon{display:grid;width:44px;height:44px;flex:0 0 44px;place-items:center;border:1px solid rgba(214,188,117,.5);border-radius:50%;color:var(--gold);background:rgba(214,188,117,.08)}
+    .contact-icon svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .contact-icon--linkedin{font:700 1.06rem/1 'DM Sans',sans-serif;letter-spacing:-.07em}
     .contact--whatsapp .contact-icon{border-color:#25d366;background:#25d366;color:#fff}
     .contact--email .contact-icon{border-color:#ea4335;background:#ea4335;color:#fff}
     .contact--linkedin .contact-icon{border-color:#0a66c2;background:#0a66c2;color:#fff}
@@ -723,7 +723,7 @@
     .projects .project:nth-child(2) .project-media img,.projects .project:nth-child(3) .project-media img{height:170px;min-height:0;object-fit:cover}
     /* Sur PC, Création de contenu reprend le même bandeau 3:2 qu’EatToBuild : les deux images partagent le haut et le bas de ligne. */
     @media(min-width:721px){
-      .projects .project:nth-child(2) .project-media{height:auto;min-height:0;max-height:none;aspect-ratio:3/2}
+      .projects .project:nth-child(2) .project-media{height:auto;min-height:0;max-height:none;aspect-ratio:1.492/1}
       .projects .project:nth-child(2) .project-media img{width:100%;height:100%;min-height:0;object-fit:cover}
     }
 
