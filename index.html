@@ -700,7 +700,7 @@
     .video:not(.dounia-reel) .player-fullscreen{display:grid!important;width:32px;height:32px;flex:0 0 32px;place-items:center;border:1px solid rgba(214,188,117,.8);border-radius:3px;background:rgba(214,188,117,.12);color:var(--gold);opacity:1!important;visibility:visible!important;font-size:1rem}
     /* Dounia 2 et 3 : le plein écran reste directement visible sur PC, comme les cartes ACG. */
     @media(min-width:621px){
-      .videos>article.dounia-reel:nth-child(2) .player-controls,.videos>article.dounia-reel:nth-child(3) .player-controls{top:12px;bottom:auto;opacity:1!important;transform:none!important}
+      .videos>article.dounia-reel:nth-child(2) .player-controls,.videos>article.dounia-reel:nth-child(3) .player-controls{top:auto;bottom:12px;opacity:1!important;transform:none!important}
       .videos>article.dounia-reel:nth-child(2) .player-pip,.videos>article.dounia-reel:nth-child(3) .player-pip{display:none}
       .videos>article.dounia-reel:nth-child(2) .player-fullscreen,.videos>article.dounia-reel:nth-child(3) .player-fullscreen{display:grid!important;width:30px;height:30px;flex:0 0 30px;place-items:center;border:1px solid rgba(214,188,117,.8);border-radius:3px;background:rgba(214,188,117,.12);color:var(--gold);opacity:1!important;visibility:visible!important;font-size:1rem}
     }
