@@ -767,7 +767,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
 [data-theme="light"] .lang-level{padding:4px 7px;border:1px solid rgba(92,61,16,.34);background:rgba(255,250,238,.82);color:#4a2d08!important;font-weight:800;letter-spacing:.04em}
 [data-theme="light"] .bar{height:8px;overflow:visible;background:#b6a98f;outline:1px solid rgba(73,55,25,.34);box-shadow:inset 0 1px 2px rgba(40,29,11,.26),0 2px 6px rgba(59,43,16,.12)}
 [data-theme="light"] .bar i{background:linear-gradient(90deg,#71470f,#a97620 45%,#d9b75d);box-shadow:0 1px 2px rgba(56,35,8,.38),inset 0 1px 0 rgba(255,255,255,.45)}
-.language-switch{min-width:42px!important;padding-inline:11px!important;border-color:rgba(214,188,117,.72)!important;color:var(--gold)!important;text-align:center}
+.language-switch{display:inline-grid!important;min-width:42px!important;min-height:38px!important;padding-inline:9px!important;place-items:center!important;border-color:rgba(214,188,117,.72)!important;color:var(--gold)!important;font-size:1.15rem!important;line-height:1!important;text-align:center}
 @media(max-width:620px){.profile-inset{top:12px!important;left:-8px!important;width:36%!important}}
 </style>	<script type="importmap">
   {
@@ -898,8 +898,8 @@ Error generating stack: `+l.message+`
 <a href="#contact">Contact</a>
 </nav>
 <div class="header-cta">
-<a aria-label="Voir le portfolio en anglais" class="language-switch" href="./en/">EN</a>
-<a data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf">Mon CV</a>
+<a aria-label="Voir le portfolio en anglais" class="language-switch" href="./en/" title="English portfolio">🇺🇸</a>
+<a data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf">Mon CV</a>
 <a class="primary" href="#contact">Me contacter</a>
 </div>
 <button aria-label="Basculer vers le thème clair" aria-pressed="false" class="theme-toggle">
@@ -927,8 +927,8 @@ Error generating stack: `+l.message+`
 <p class="hero-value hero-reveal">Je transforme la communication et la création de contenu en visibilité digitale.</p>
 <div class="actions hero-reveal">
 <a class="btn primary" href="#projects">Voir mes réalisations</a>
-<a class="btn" data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf">Visualiser CV</a>
-<a class="btn" download="Amine-Ould-El-Faquir-CV.pdf" href="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf">Télécharger CV</a>
+<a class="btn" data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf">Visualiser CV</a>
+<a class="btn" download="Amine-Ould-El-Faquir-CV.pdf" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf">Télécharger CV</a>
 </div>
 </div>
 	<div class="hero-art">
@@ -1680,12 +1680,12 @@ Error generating stack: `+l.message+`
       document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
     })();
   </script>
-<div aria-hidden="true" class="document-modal" id="cv-modal"><div class="document-modal-backdrop" data-document-close=""></div><section aria-label="CV d'Amine Ould El Faquir" aria-modal="true" class="document-modal-panel" role="dialog"><button aria-label="Fermer le CV" class="document-modal-close" data-document-close="" type="button">×</button><div class="document-modal-title"><span>Curriculum vitæ</span><a download="Amine-Ould-El-Faquir-CV.pdf" href="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf">Télécharger le PDF ↓</a></div><iframe src="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf" title="CV d'Amine Ould El Faquir"></iframe><div class="cv-mobile-preview"><img alt="CV d'Amine Ould El Faquir" loading="eager" src="https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv-mobile-preview_d237fbe6.png"/></div></section></div><div aria-hidden="true" class="document-modal" id="certificate-modal"><div class="document-modal-backdrop" data-document-close=""></div><section aria-label="Visualisation du certificat" aria-modal="true" class="document-modal-panel certificate-modal-panel" role="dialog"><button aria-label="Fermer le certificat" class="document-modal-close" data-document-close="" type="button">×</button><div class="document-modal-title"><span id="certificate-modal-title">Certificat</span></div><div class="certificate-modal-content" id="certificate-modal-content"></div></section></div><script>
+<div aria-hidden="true" class="document-modal" id="cv-modal"><div class="document-modal-backdrop" data-document-close=""></div><section aria-label="CV d'Amine Ould El Faquir" aria-modal="true" class="document-modal-panel" role="dialog"><button aria-label="Fermer le CV" class="document-modal-close" data-document-close="" type="button">×</button><div class="document-modal-title"><span>Curriculum vitæ</span><a download="Amine-Ould-El-Faquir-CV.pdf" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf">Télécharger le PDF ↓</a></div><iframe src="https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf" title="CV d'Amine Ould El Faquir"></iframe><div class="cv-mobile-preview"><img alt="CV d'Amine Ould El Faquir" loading="eager" src="https://aminefolio-bafszvhn.manus.space/manus-storage/page-0001_9194e605.png"/></div></section></div><div aria-hidden="true" class="document-modal" id="certificate-modal"><div class="document-modal-backdrop" data-document-close=""></div><section aria-label="Visualisation du certificat" aria-modal="true" class="document-modal-panel certificate-modal-panel" role="dialog"><button aria-label="Fermer le certificat" class="document-modal-close" data-document-close="" type="button">×</button><div class="document-modal-title"><span id="certificate-modal-title">Certificat</span></div><div class="certificate-modal-content" id="certificate-modal-content"></div></section></div><script>
 /* Design reminder: Atelier éditorial cinématique — documents accessibles et actions explicites. */
 (() => {
   const open = modal => { modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
   const close = modal => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; };
-  const cvUrl = 'https://aminefolio-bafszvhn.manus.space/manus-storage/amine-cv_818f6184.pdf';
+  const cvUrl = 'https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf';
   document.querySelectorAll('[data-cv-open]').forEach(trigger => trigger.addEventListener('click', event => { event.preventDefault(); window.location.assign(cvUrl); }));
   document.querySelectorAll('.certificate[data-cert-src]').forEach(card => {
     const display = event => {
