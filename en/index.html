@@ -125,8 +125,10 @@
     }
     .skip-link:focus{top:16px}
 
-    /* Curseur natif conservé sur ordinateur : aucune surcouche décorative. */
-    body.has-fine-pointer,body.has-fine-pointer a,body.has-fine-pointer button{cursor:auto}
+    /* Native desktop cursor: pointer for actions, text cursor only inside editable fields. */
+    body.has-fine-pointer{cursor:default}
+    body.has-fine-pointer a,body.has-fine-pointer button,body.has-fine-pointer [role="button"],body.has-fine-pointer [data-cv-open],body.has-fine-pointer .certificate[data-cert-src],body.has-fine-pointer input[type="range"]{cursor:pointer}
+    body.has-fine-pointer input:not([type="range"]),body.has-fine-pointer textarea{cursor:text}
 
     /* ============================================================
        CUSTOM CURSOR (desktop only)
