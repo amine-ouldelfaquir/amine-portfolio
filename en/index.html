@@ -767,7 +767,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
 [data-theme="light"] .lang-level{padding:4px 7px;border:1px solid rgba(92,61,16,.34);background:rgba(255,250,238,.82);color:#4a2d08!important;font-weight:800;letter-spacing:.04em}
 [data-theme="light"] .bar{height:8px;overflow:visible;background:#b6a98f;outline:1px solid rgba(73,55,25,.34);box-shadow:inset 0 1px 2px rgba(40,29,11,.26),0 2px 6px rgba(59,43,16,.12)}
 [data-theme="light"] .bar i{background:linear-gradient(90deg,#71470f,#a97620 45%,#d9b75d);box-shadow:0 1px 2px rgba(56,35,8,.38),inset 0 1px 0 rgba(255,255,255,.45)}
-.language-switch{min-width:42px!important;padding-inline:11px!important;border-color:rgba(214,188,117,.72)!important;color:var(--gold)!important;text-align:center}
+.language-switch{display:inline-grid!important;min-width:42px!important;min-height:38px!important;padding-inline:9px!important;place-items:center!important;border-color:rgba(214,188,117,.72)!important;color:var(--gold)!important;font-size:1.15rem!important;line-height:1!important;text-align:center}
 @media(max-width:620px){.profile-inset{top:12px!important;left:-8px!important;width:36%!important}}
 </style>	<script type="importmap">
   {
@@ -898,7 +898,7 @@ Error generating stack: `+l.message+`
 <a href="#contact">Contact</a>
 </nav>
 	<div class="header-cta">
-	<a aria-label="View the French portfolio" class="language-switch" href="../">FR</a>
+		<a aria-label="View the French portfolio" class="language-switch" href="../" title="Portfolio français">🇫🇷</a>
 		<a data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_f9a8e785.pdf">My Resume</a>
 	<a class="primary" href="#contact">Get in touch</a>
 </div>
