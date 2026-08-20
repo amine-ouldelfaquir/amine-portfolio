@@ -901,7 +901,7 @@ Error generating stack: `+l.message+`
 </nav>
 	<div class="header-cta">
 		<a aria-label="View the French portfolio" class="language-switch" href="../" title="Portfolio français">🇫🇷</a>
-		<a data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_f9a8e785.pdf">My Resume</a>
+		<a data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_cafdfa8a.pdf">My Resume</a>
 	<a class="primary" href="#contact">Get in touch</a>
 </div>
 <button aria-label="Basculer vers le thème clair" aria-pressed="false" class="theme-toggle">
@@ -929,9 +929,9 @@ Error generating stack: `+l.message+`
 	<p class="hero-value hero-reveal">I turn communication and content creation into digital visibility.</p>
 	<div class="actions hero-reveal">
 	<a class="btn primary" href="#projects">View my work</a>
-		<a class="btn" data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_f9a8e785.pdf">View Resume</a>
-		<a class="btn" download="Amine-Ould-El-Faquir-ATS-Resume.pdf" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_f9a8e785.pdf">Download Resume</a>
-		<a class="btn" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_dc2b55ce.pdf" rel="noreferrer" target="_blank">Certificate translations</a>
+		<a class="btn" data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_cafdfa8a.pdf">View Resume</a>
+		<a class="btn" download="Amine-Ould-El-Faquir-ATS-Resume.pdf" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_cafdfa8a.pdf">Download Resume</a>
+		<a class="btn" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_901eebb2.pdf" rel="noreferrer" target="_blank">Certificate translations</a>
 </div>
 </div>
 	<div class="hero-art">
@@ -1688,7 +1688,7 @@ Error generating stack: `+l.message+`
 (() => {
   const open = modal => { modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
   const close = modal => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; };
-  const cvUrl = 'https://aminefolio-bafszvhn.manus.space/manus-storage/main_f9a8e785.pdf';
+  const cvUrl = 'https://aminefolio-bafszvhn.manus.space/manus-storage/main_cafdfa8a.pdf';
   document.querySelectorAll('[data-cv-open]').forEach(trigger => trigger.addEventListener('click', event => { event.preventDefault(); window.location.assign(cvUrl); }));
   document.querySelectorAll('.certificate[data-cert-src]').forEach(card => {
     const display = event => {
@@ -1738,10 +1738,10 @@ Error generating stack: `+l.message+`
   };
   translateTree(document.body);
   document.querySelectorAll('[aria-label],[alt],[title],[placeholder]').forEach(element => ['aria-label','alt','title','placeholder'].forEach(attribute => { let value = element.getAttribute(attribute); if (!value) return; Object.entries(attributes).forEach(([from, to]) => { if (value.includes(from)) value = value.replaceAll(from, to); }); element.setAttribute(attribute, value); }));
-  document.querySelectorAll('[data-cv-open],[download]').forEach(link => { if (link.getAttribute('href')?.includes('amine-cv_818f6184')) link.setAttribute('href','https://aminefolio-bafszvhn.manus.space/manus-storage/main_f9a8e785.pdf'); });
-  document.querySelectorAll('iframe[src*="amine-cv_818f6184"]').forEach(frame => frame.src = 'https://aminefolio-bafszvhn.manus.space/manus-storage/main_f9a8e785.pdf');
+  document.querySelectorAll('[data-cv-open],[download]').forEach(link => { if (link.getAttribute('href')?.includes('amine-cv_818f6184')) link.setAttribute('href','https://aminefolio-bafszvhn.manus.space/manus-storage/main_cafdfa8a.pdf'); });
+  document.querySelectorAll('iframe[src*="amine-cv_818f6184"]').forEach(frame => frame.src = 'https://aminefolio-bafszvhn.manus.space/manus-storage/main_cafdfa8a.pdf');
   document.querySelectorAll('.certificate[data-cert-src]').forEach(card => { card.dataset.certTitle = card.dataset.certTitle?.replace('Certificat HP LIFE — Marketing sur les réseaux sociaux', 'HP LIFE Certificate — Social Media Marketing').replace('Certificat Responsable Marketing Digital — Académie ACG', 'Digital Marketing Manager Certificate — ACG Academy') || 'Certificate'; });
-  const guide = document.createElement('p'); guide.className = 'note reveal'; guide.innerHTML = '<strong>English certificate translations</strong> <a href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_dc2b55ce.pdf" target="_blank" rel="noreferrer">Open the unofficial English translation guide ↗</a>'; document.querySelector('.certifications')?.after(guide);
+  const guide = document.createElement('p'); guide.className = 'note reveal'; guide.innerHTML = '<strong>English certificate translations</strong> <a href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_901eebb2.pdf" target="_blank" rel="noreferrer">Open the unofficial English translation guide ↗</a>'; document.querySelector('.certifications')?.after(guide);
   new MutationObserver(records => records.forEach(record => { if (record.type === 'characterData') translateTree(record.target); if (record.type === 'childList') record.addedNodes.forEach(translateTree); if (record.type === 'attributes') { const value = record.target.getAttribute(record.attributeName); const next = value && (attributes[value] || translateText(value)); if (next && next !== value) record.target.setAttribute(record.attributeName, next); } })).observe(document.body, {subtree:true, childList:true, characterData:true, attributes:true, attributeFilter:['aria-label']});
 })();
 </script></body>
