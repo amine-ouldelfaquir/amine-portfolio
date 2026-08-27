@@ -772,10 +772,11 @@ html:not([data-theme="light"]) body::before{display:none!important}
 .language-switch{display:inline-grid!important;min-width:42px!important;min-height:38px!important;padding-inline:9px!important;place-items:center!important;border-color:rgba(214,188,117,.72)!important;color:var(--gold)!important;font-size:1.15rem!important;line-height:1!important;text-align:center}
 .language-menu{position:relative;display:inline-block;z-index:50}
 .language-trigger{appearance:none;background:transparent;cursor:pointer}
-.language-options{position:absolute;top:calc(100% + 8px);right:0;display:grid;min-width:132px;padding:6px;background:var(--paper);border:1px solid rgba(214,188,117,.75);box-shadow:0 12px 28px rgba(23,20,13,.18);opacity:0;visibility:hidden;transform:translateY(-5px);transition:opacity .18s var(--ease),transform .18s var(--ease),visibility .18s var(--ease)}
+.language-options{position:absolute;top:calc(100% + 8px);right:0;display:grid;min-width:132px;padding:6px;background:var(--panel);border:1px solid rgba(214,188,117,.75);box-shadow:0 12px 28px rgba(0,0,0,.38);opacity:0;visibility:hidden;transform:translateY(-5px);transition:opacity .18s var(--ease),transform .18s var(--ease),visibility .18s var(--ease)}
 .language-menu.is-open .language-options{opacity:1;visibility:visible;transform:translateY(0)}
-.language-options a{display:flex!important;align-items:center;gap:9px;min-height:38px!important;padding:8px 10px!important;border:0!important;color:var(--ink)!important;background:transparent!important;font-size:.72rem!important;font-weight:700;letter-spacing:.05em;text-transform:none;white-space:nowrap}
-.language-options a:hover,.language-options a:focus-visible{background:var(--gold-faint)!important;color:var(--ink)!important}
+.language-options a{display:flex!important;align-items:center;gap:9px;min-height:38px!important;padding:8px 10px!important;border:0!important;color:var(--ivory)!important;background:transparent!important;font-size:.72rem!important;font-weight:700;letter-spacing:.05em;text-transform:none;white-space:nowrap}
+.language-options a:hover,.language-options a:focus-visible{background:var(--gold-faint)!important;color:var(--ivory)!important}
+[data-theme="light"] .language-options{background:var(--raised);box-shadow:0 12px 28px rgba(23,20,13,.18)}
 @media(max-width:850px){
   header .header-cta{display:flex!important;margin-left:auto!important;gap:5px!important}
   header .header-cta>a:not(.language-switch){display:none!important}
