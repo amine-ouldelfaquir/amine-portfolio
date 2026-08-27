@@ -770,6 +770,12 @@ html:not([data-theme="light"]) body::before{display:none!important}
 [data-theme="light"] .bar{height:8px;overflow:visible;background:#b6a98f;outline:1px solid rgba(73,55,25,.34);box-shadow:inset 0 1px 2px rgba(40,29,11,.26),0 2px 6px rgba(59,43,16,.12)}
 [data-theme="light"] .bar i{background:linear-gradient(90deg,#71470f,#a97620 45%,#d9b75d);box-shadow:0 1px 2px rgba(56,35,8,.38),inset 0 1px 0 rgba(255,255,255,.45)}
 .language-switch{display:inline-grid!important;min-width:42px!important;min-height:38px!important;padding-inline:9px!important;place-items:center!important;border-color:rgba(214,188,117,.72)!important;color:var(--gold)!important;font-size:1.15rem!important;line-height:1!important;text-align:center}
+.language-menu{position:relative;display:inline-block;z-index:50}
+.language-trigger{appearance:none;background:transparent;cursor:pointer}
+.language-options{position:absolute;top:calc(100% + 8px);right:0;display:grid;min-width:132px;padding:6px;background:var(--paper);border:1px solid rgba(214,188,117,.75);box-shadow:0 12px 28px rgba(23,20,13,.18);opacity:0;visibility:hidden;transform:translateY(-5px);transition:opacity .18s var(--ease),transform .18s var(--ease),visibility .18s var(--ease)}
+.language-menu.is-open .language-options{opacity:1;visibility:visible;transform:translateY(0)}
+.language-options a{display:flex!important;align-items:center;gap:9px;min-height:38px!important;padding:8px 10px!important;border:0!important;color:var(--ink)!important;background:transparent!important;font-size:.72rem!important;font-weight:700;letter-spacing:.05em;text-transform:none;white-space:nowrap}
+.language-options a:hover,.language-options a:focus-visible{background:var(--gold-faint)!important;color:var(--ink)!important}
 @media(max-width:850px){
   header .header-cta{display:flex!important;margin-left:auto!important;gap:5px!important}
   header .header-cta>a:not(.language-switch){display:none!important}
@@ -784,7 +790,7 @@ html:not([data-theme="light"]) body::before{display:none!important}
     }
   }
   </script>
-  <script type="module" crossorigin src="/amine-portfolio/assets/en-DWpRddaR.js"></script>
+  <script type="module" crossorigin src="/amine-portfolio/assets/en-COTdv2kr.js"></script>
   <link rel="modulepreload" crossorigin href="/amine-portfolio/assets/ScrollTrigger-O9LLUwPw.js">
   <script src="/__manus__/debug-collector.js" defer></script>
 </head>
@@ -905,7 +911,10 @@ Error generating stack: `+l.message+`
 <a href="#contact">Contact</a>
 </nav>
 	<div class="header-cta">
-		<a aria-label="View the French portfolio" class="language-switch" href="../" title="Portfolio français">🇫🇷</a>
+		<div class="language-menu">
+			<button aria-expanded="false" aria-haspopup="true" aria-label="Choose language" class="language-switch language-trigger" title="English" type="button">🇺🇸</button>
+			<div class="language-options" role="menu"><a aria-label="Show the French portfolio" href="../" role="menuitem"><span aria-hidden="true">🇫🇷</span> <span data-no-translate="">Français</span></a></div>
+		</div>
 		<a data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_cafdfa8a.pdf">My Resume</a>
 	<a class="primary" href="#contact">Get in touch</a>
 </div>
@@ -1736,9 +1745,9 @@ Error generating stack: `+l.message+`
   const translations = Object.entries(copy).sort(([fromA], [fromB]) => fromB.length - fromA.length);
   const translateText = value => { let output = value; translations.forEach(([from, to]) => { if (output.includes(from)) output = output.replaceAll(from, to); }); return output.replaceAll('Certificatee translations', 'Certificate translations').replaceAll('Certificateions', 'Certifications').replaceAll('Experience Et stages', 'Experience and internships').replaceAll('Videos Et Reels', 'Videos and Reels'); };
   const translateTree = root => {
-    if (root.nodeType === Node.TEXT_NODE) { if (!root.parentElement?.closest('script,style')) { const next = translateText(root.nodeValue); if (next !== root.nodeValue) root.nodeValue = next; } return; }
+    if (root.nodeType === Node.TEXT_NODE) { if (!root.parentElement?.closest('script,style,[data-no-translate]')) { const next = translateText(root.nodeValue); if (next !== root.nodeValue) root.nodeValue = next; } return; }
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); const nodes = []; let node;
-    while (node = walker.nextNode()) if (!node.parentElement?.closest('script,style')) nodes.push(node);
+    while (node = walker.nextNode()) if (!node.parentElement?.closest('script,style,[data-no-translate]')) nodes.push(node);
     nodes.forEach(item => { const next = translateText(item.nodeValue); if (next !== item.nodeValue) item.nodeValue = next; });
   };
   translateTree(document.body);
