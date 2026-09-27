@@ -938,7 +938,13 @@ Error generating stack: `+l.message+`
 <section class="hero" id="hero">
 <div class="wrap hero-grid">
 <div>
-<span class="status hero-reveal">Disponible pour Stage ou Collaboration</span>
+<style>
+@keyframes attention-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(214,188,117,.2); border-color: rgba(214,188,117,.4); }
+  50% { box-shadow: 0 0 20px rgba(214,188,117,.8); border-color: rgba(214,188,117,1); text-shadow: 0 0 8px rgba(214,188,117,.8); }
+}
+</style>
+<span class="status hero-reveal" style="animation: attention-glow 2s infinite; color: #fff; background: rgba(214,188,117,.15);">DISPONIBLE POUR STAGE (DÈS JANVIER 2027)</span>
 <h1 class="hero-reveal">AMINE <em>OULD EL FAQUIR</em></h1>
 <p class="hero-desc hero-reveal">Marketing Digital & Communication<br/>Master Ingénierie Commerciale Et Marketing Digital · ENSET Mohammedia</p>
 <p class="hero-value hero-reveal">Je combine vision marketing, création de contenu et IA générative pour booster votre visibilité.</p>
