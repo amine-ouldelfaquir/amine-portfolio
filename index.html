@@ -916,7 +916,7 @@ Error generating stack: `+l.message+`
 			<button aria-expanded="false" aria-haspopup="true" aria-label="Choisir la langue" class="language-switch language-trigger" title="Français" type="button">🇫🇷</button>
 			<div class="language-options" role="menu"><a aria-label="Afficher le portfolio en anglais" href="./en/" role="menuitem"><span aria-hidden="true">🇺🇸</span> English</a></div>
 		</div>
-		<a data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf">Mon CV</a>
+		<a data-cv-open="" href="./cv-amine.pdf">Mon CV</a>
 <a class="primary" href="#contact">Me contacter</a>
 </div>
 <button aria-label="Basculer vers le thème clair" aria-pressed="false" class="theme-toggle">
@@ -948,8 +948,8 @@ Error generating stack: `+l.message+`
 </div>
 <div class="actions hero-reveal">
 <a class="btn primary" href="#projects">Voir mes réalisations</a>
-<a class="btn" data-cv-open="" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf">Visualiser CV</a>
-<a class="btn" download="Amine-Ould-El-Faquir-CV.pdf" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf">Télécharger CV</a>
+<a class="btn" data-cv-open="" href="./cv-amine.pdf">Visualiser CV</a>
+<a class="btn" download="Amine-Ould-El-Faquir-CV.pdf" href="./cv-amine.pdf">Télécharger CV</a>
 </div>
 </div>
 	<div class="hero-art">
@@ -1701,12 +1701,12 @@ Error generating stack: `+l.message+`
       document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
     })();
   </script>
-<div aria-hidden="true" class="document-modal" id="cv-modal"><div class="document-modal-backdrop" data-document-close=""></div><section aria-label="CV d'Amine Ould El Faquir" aria-modal="true" class="document-modal-panel" role="dialog"><button aria-label="Fermer le CV" class="document-modal-close" data-document-close="" type="button">×</button><div class="document-modal-title"><span>Curriculum vitæ</span><a download="Amine-Ould-El-Faquir-CV.pdf" href="https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf">Télécharger le PDF ↓</a></div><iframe src="https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf" title="CV d'Amine Ould El Faquir"></iframe><div class="cv-mobile-preview"><img alt="CV d'Amine Ould El Faquir" loading="eager" src="https://aminefolio-bafszvhn.manus.space/manus-storage/page-0001_9194e605.png"/></div></section></div><div aria-hidden="true" class="document-modal" id="certificate-modal"><div class="document-modal-backdrop" data-document-close=""></div><section aria-label="Visualisation du certificat" aria-modal="true" class="document-modal-panel certificate-modal-panel" role="dialog"><button aria-label="Fermer le certificat" class="document-modal-close" data-document-close="" type="button">×</button><div class="document-modal-title"><span id="certificate-modal-title">Certificat</span></div><div class="certificate-modal-content" id="certificate-modal-content"></div></section></div><script>
+<div aria-hidden="true" class="document-modal" id="cv-modal"><div class="document-modal-backdrop" data-document-close=""></div><section aria-label="CV d'Amine Ould El Faquir" aria-modal="true" class="document-modal-panel" role="dialog"><button aria-label="Fermer le CV" class="document-modal-close" data-document-close="" type="button">×</button><div class="document-modal-title"><span>Curriculum vitæ</span><a download="Amine-Ould-El-Faquir-CV.pdf" href="./cv-amine.pdf">Télécharger le PDF ↓</a></div><iframe src="./cv-amine.pdf" title="CV d'Amine Ould El Faquir"></iframe><div class="cv-mobile-preview"><img alt="CV d'Amine Ould El Faquir" loading="eager" src="https://aminefolio-bafszvhn.manus.space/manus-storage/page-0001_9194e605.png"/></div></section></div><div aria-hidden="true" class="document-modal" id="certificate-modal"><div class="document-modal-backdrop" data-document-close=""></div><section aria-label="Visualisation du certificat" aria-modal="true" class="document-modal-panel certificate-modal-panel" role="dialog"><button aria-label="Fermer le certificat" class="document-modal-close" data-document-close="" type="button">×</button><div class="document-modal-title"><span id="certificate-modal-title">Certificat</span></div><div class="certificate-modal-content" id="certificate-modal-content"></div></section></div><script>
 /* Design reminder: Atelier éditorial cinématique — documents accessibles et actions explicites. */
 (() => {
   const open = modal => { modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
   const close = modal => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; };
-  const cvUrl = 'https://aminefolio-bafszvhn.manus.space/manus-storage/main_65b61050.pdf';
+  const cvUrl = './cv-amine.pdf';
   document.querySelectorAll('[data-cv-open]').forEach(trigger => trigger.addEventListener('click', event => { event.preventDefault(); window.location.assign(cvUrl); }));
   document.querySelectorAll('.certificate[data-cert-src]').forEach(card => {
     const display = event => {
